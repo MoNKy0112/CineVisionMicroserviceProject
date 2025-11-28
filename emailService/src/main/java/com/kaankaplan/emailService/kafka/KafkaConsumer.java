@@ -15,8 +15,9 @@ public class KafkaConsumer {
 
     private final EmailService emailService;
 
-    @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
-    public void consume(EmailMessageKafkaDto emailMessageKafkaDto){
+    @KafkaListener(topics = "${spring.kafka.topic.name}",
+            groupId = "${spring.kafka.consumer.group-id}")
+    public void consume(EmailMessageKafkaDto emailMessageKafkaDto) {
         // send email
         Map<String, String> model = new HashMap<>();
         model.put("fullName", emailMessageKafkaDto.getFullName());
@@ -26,6 +27,7 @@ public class KafkaConsumer {
         model.put("movieStartTime", emailMessageKafkaDto.getMovieStartTime());
         model.put("chairNumbers", emailMessageKafkaDto.getChairNumbers());
 
-        emailService.sendEmail(emailMessageKafkaDto.getSender(), emailMessageKafkaDto.getRecipient(), emailMessageKafkaDto.getSubtitle(), model);
+        emailService.sendEmail(emailMessageKafkaDto.getSender(),
+                emailMessageKafkaDto.getRecipient(), emailMessageKafkaDto.getSubtitle(), model);
     }
 }

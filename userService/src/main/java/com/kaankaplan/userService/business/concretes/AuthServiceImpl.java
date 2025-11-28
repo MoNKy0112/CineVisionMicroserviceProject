@@ -28,22 +28,24 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserAuthenticationResponseDto login(UserLoginRequestDto userLoginRequestDto) {
 
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                userLoginRequestDto.getEmail(),
-                userLoginRequestDto.getPassword()
-        ));
+        System.out.println("Auth Service - Login Attempt: " + userLoginRequestDto.getEmail());
+        System.out.println("Auth Service - Password Attempt: " + userLoginRequestDto.getPassword());
+
+        Authentication authenticate =
+                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                        userLoginRequestDto.getEmail(), userLoginRequestDto.getPassword()));
+
+        System.out.println("Auth Service - Login Successful: " + authenticate.isAuthenticated());
 
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         String token = jwtProvider.generateToken(authenticate);
 
         User user = userService.getUserByEmail(userLoginRequestDto.getEmail());
 
-        return UserAuthenticationResponseDto.builder()
-                .userId(user.getUserId())
-                .fullName(user.getFullName())
-                .email(userLoginRequestDto.getEmail())
-                .token(token)
-                .roles(authenticate.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+        return UserAuthenticationResponseDto.builder().userId(user.getUserId())
+                .fullName(user.getFullName()).email(userLoginRequestDto.getEmail()).token(token)
+                .roles(authenticate.getAuthorities().stream().map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toList()))
                 .build();
     }
 

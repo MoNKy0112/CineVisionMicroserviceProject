@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name= "director")
+@Table(name = "director")
 public class Director implements Serializable {
 
     @Id

@@ -21,7 +21,7 @@ spring:
   # Apache Kafka Producer Properties
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
@@ -60,6 +60,13 @@ management:
       show-details: always
   server:
     port: 8000
+  tracing:
+    enabled: false
+  zipkin:
+    tracing:
+      export:
+        enabled: false
+
 resilience4j:
   circuitbreaker:
     instances:

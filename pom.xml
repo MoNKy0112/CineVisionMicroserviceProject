@@ -13,8 +13,8 @@
     <module>movieService</module>
     <module>userService</module>
     <module>eureka-server</module>
-      <module>emailService</module>
-      <module>api-gateway</module>
+    <module>emailService</module>
+    <module>api-gateway</module>
   </modules>
 
   <name>CineVisionMicroservice</name>
@@ -25,9 +25,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <spring.boot.maven.plugin.version>2.7.0</spring.boot.maven.plugin.version>
-    <spring.boot.dependencies.version>2.7.0</spring.boot.dependencies.version>
-    <spring.cloud.version>2021.0.3</spring.cloud.version>
+    <spring.boot.maven.plugin.version>3.5.8</spring.boot.maven.plugin.version>
+    <spring.boot.dependencies.version>3.5.8</spring.boot.dependencies.version>
+    <spring.cloud.version>2025.0.0</spring.cloud.version>
   </properties>
 
   <dependencyManagement>

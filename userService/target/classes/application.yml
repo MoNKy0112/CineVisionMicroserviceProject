@@ -19,7 +19,10 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
-
+logging:
+  level:
+    'org.springframework.web': DEBUG
+    com.kaankaplan.userService: DEBUG
 ## Eureka Properties
 eureka:
   client:

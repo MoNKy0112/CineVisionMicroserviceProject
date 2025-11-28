@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImpl  implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserService userService;
 
@@ -22,15 +22,26 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userService.getUserByEmail(email);
 
-        if(user == null) {
+        if (user == null) {
             throw new UsernameNotFoundException("Kullanıcı bulunamadı");
         }
 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getClaim().getClaimName()));
+        // Si claim es null, asignamos un rol por defecto
+        String role = "ROLE_ADMIN";
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getEmail(), user.getPassword(), authorities);
+        if (user.getClaim() != null && user.getClaim().getClaimName() != null) {
+            role = "ROLE_" + user.getClaim().getClaimName();
+        }
+        System.out.println("Assigned role: " + role + " for user: " + email);
+        System.out.println(
+                "getClaim: " + (user.getClaim() != null ? user.getClaim().getClaimName() : "null"));
+
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+
+        return new org.springframework.security.core.userdetails.User(user.getEmail(),
+                user.getPassword(), authorities);
     }
+
 
 }

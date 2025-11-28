@@ -4,19 +4,39 @@ server:
 spring:
   application:
     name: eureka-server
-  # Zipkin Properties
-  zipkin:
-    base-url: http://localhost:9411
-  # Sleuth Properties
-  sleuth:
-    sampler:
-      probability: 1.0
+
+  # zipkin:
+  #   base-url: http://zipkin:9411
+  # zipkin:
+  #   enabled: false
 
 # Eureka Properties
 eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
   instance:
-    hostname: localhost
+    hostname: eureka-server
     prefer-ip-address: true
+
+# Micrometer Zipkin configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 8761
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      export:
+        enabled: false
+      # endpoint: http://localhost:9411
