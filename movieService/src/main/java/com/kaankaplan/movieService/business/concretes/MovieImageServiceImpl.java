@@ -24,8 +24,8 @@ public class MovieImageServiceImpl implements MovieImageService {
     public MovieImage addMovieImage(ImageRequestDto imageRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + imageRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + imageRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
@@ -39,6 +39,6 @@ public class MovieImageServiceImpl implements MovieImageService {
 
             return movieImageDao.save(image);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }

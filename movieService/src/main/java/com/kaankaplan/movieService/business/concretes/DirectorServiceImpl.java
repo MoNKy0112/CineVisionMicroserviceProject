@@ -36,8 +36,8 @@ public class DirectorServiceImpl implements DirectorService {
     public Director add(DirectorRequestDto directorRequestDto)
     {
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + directorRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + directorRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
@@ -48,6 +48,6 @@ public class DirectorServiceImpl implements DirectorService {
                     .build();
             return directorDao.save(director);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }

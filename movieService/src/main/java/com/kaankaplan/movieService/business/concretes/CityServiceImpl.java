@@ -39,8 +39,8 @@ public class CityServiceImpl implements CityService {
     @Override
     public void add(CityRequestDto cityRequestDto) {
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + cityRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + cityRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();

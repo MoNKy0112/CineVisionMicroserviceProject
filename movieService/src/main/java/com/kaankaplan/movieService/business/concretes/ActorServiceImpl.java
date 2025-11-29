@@ -40,8 +40,8 @@ public class ActorServiceImpl implements ActorService {
     public void addActors(ActorRequestDto actorRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + actorRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + actorRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();

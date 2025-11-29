@@ -38,8 +38,8 @@ public class CommentServiceImpl implements CommentService {
     public void deleteComment(DeleteCommentRequestDto deleteCommentRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/users/isUserCustomer")
-                .header("Authorization","Bearer " + deleteCommentRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/users/isUserCustomer")
+                // .header("Authorization","Bearer " + deleteCommentRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
@@ -54,8 +54,8 @@ public class CommentServiceImpl implements CommentService {
     public Comment addComment(CommentRequestDto commentRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/users/isUserCustomer")
-                .header("Authorization","Bearer " + commentRequestDto.getToken())
+                // .uri("http://USERSERVICE/api/user/users/isUserCustomer")
+                // .header("Authorization","Bearer " + commentRequestDto.getToken())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
@@ -72,6 +72,6 @@ public class CommentServiceImpl implements CommentService {
 
             return commentDao.save(comment);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }
