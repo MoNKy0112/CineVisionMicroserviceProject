@@ -1,2 +1,5 @@
-movieService/target
+movieService/target/
+*/
+target/
+*/target/
 .vscode/

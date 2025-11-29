@@ -25,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getCommentsByMovieId(int movieId, int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return commentDao.getCommentsByMovieMovieId(movieId, pageable);
     }
 
@@ -39,10 +39,8 @@ public class CommentServiceImpl implements CommentService {
 
         Boolean result = webClientBuilder.build().get()
                 .uri("http://USERSERVICE/api/user/users/isUserCustomer")
-                .header("Authorization","Bearer " + deleteCommentRequestDto.getToken())
-                .retrieve()
-                .bodyToMono(Boolean.class)
-                .block();
+                .header("Authorization", "Bearer " + deleteCommentRequestDto.getToken()).retrieve()
+                .bodyToMono(Boolean.class).block();
 
         if (result) {
             commentDao.deleteById(deleteCommentRequestDto.getCommentId());
@@ -55,20 +53,16 @@ public class CommentServiceImpl implements CommentService {
 
         Boolean result = webClientBuilder.build().get()
                 .uri("http://USERSERVICE/api/user/users/isUserCustomer")
-                .header("Authorization","Bearer " + commentRequestDto.getToken())
-                .retrieve()
-                .bodyToMono(Boolean.class)
-                .block();
+                .header("Authorization", "Bearer " + commentRequestDto.getToken()).retrieve()
+                .bodyToMono(Boolean.class).block();
 
         if (result) {
             Movie movie = movieService.getMovieById(commentRequestDto.getMovieId());
 
-            Comment comment = Comment.builder()
-                    .commentByUserId(commentRequestDto.getCommentByUserId())
-                    .commentBy(commentRequestDto.getCommentBy())
-                    .commentText(commentRequestDto.getCommentText())
-                    .movie(movie)
-                    .build();
+            Comment comment =
+                    Comment.builder().commentByUserId(commentRequestDto.getCommentByUserId())
+                            .commentBy(commentRequestDto.getCommentBy())
+                            .commentText(commentRequestDto.getCommentText()).movie(movie).build();
 
             return commentDao.save(comment);
         }

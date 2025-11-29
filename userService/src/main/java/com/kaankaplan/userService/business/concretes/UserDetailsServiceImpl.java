@@ -27,10 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         // Si claim es null, asignamos un rol por defecto
-        String role = "ROLE_ADMIN";
+        String role = "ADMIN";
 
         if (user.getClaim() != null && user.getClaim().getClaimName() != null) {
-            role = "ROLE_" + user.getClaim().getClaimName();
+            role = user.getClaim().getClaimName();
         }
         System.out.println("Assigned role: " + role + " for user: " + email);
         System.out.println(

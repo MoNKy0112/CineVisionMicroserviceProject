@@ -33,19 +33,17 @@ public class DirectorServiceImpl implements DirectorService {
 
     @CacheEvict(value = "directors", allEntries = true)
     @Override
-    public Director add(DirectorRequestDto directorRequestDto)
-    {
-        Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + directorRequestDto.getToken())
-                .retrieve()
-                .bodyToMono(Boolean.class)
-                .block();
+    public Director add(DirectorRequestDto directorRequestDto) {
+        Boolean result =
+                webClientBuilder.build().get().uri("http://USERSERVICE/api/user/users/isUserAdmin")
+                        .header("Authorization", "Bearer " + directorRequestDto.getToken())
+                        .retrieve().bodyToMono(Boolean.class).block();
+
+
 
         if (result) {
-            Director director = Director.builder()
-                    .directorName(directorRequestDto.getDirectorName())
-                    .build();
+            Director director =
+                    Director.builder().directorName(directorRequestDto.getDirectorName()).build();
             return directorDao.save(director);
         }
         throw new RuntimeException("Yetki hatası");
