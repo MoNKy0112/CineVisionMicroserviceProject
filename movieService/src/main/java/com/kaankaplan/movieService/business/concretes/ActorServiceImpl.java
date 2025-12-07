@@ -39,21 +39,16 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public void addActors(ActorRequestDto actorRequestDto) {
 
-        Boolean result = webClientBuilder.build().get()
-                .uri("http://USERSERVICE/api/user/isUserAdmin")
-                .header("Authorization", "Bearer " + actorRequestDto.getToken())
-                .retrieve()
-                .bodyToMono(Boolean.class)
-                .block();
+        Boolean result =
+                webClientBuilder.build().get().uri("http://USERSERVICE/api/user/users/isUserAdmin")
+                        .header("Authorization", "Bearer " + actorRequestDto.getToken()).retrieve()
+                        .bodyToMono(Boolean.class).block();
 
         if (result) {
             Movie movie = movieService.getMovieById(actorRequestDto.getMovieId());
 
-            for (String actorName: actorRequestDto.getActorNameList()) {
-                Actor actor = Actor.builder()
-                        .actorName(actorName)
-                        .movie(movie)
-                        .build();
+            for (String actorName : actorRequestDto.getActorNameList()) {
+                Actor actor = Actor.builder().actorName(actorName).movie(movie).build();
                 actorDao.save(actor);
             }
         }

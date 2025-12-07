@@ -9,6 +9,8 @@ public interface UserService {
 
     void addUser(UserRegisterRequestDto userRegisterRequestDto);
 
+    void addAdmin(UserRegisterRequestDto userRegisterRequestDto);
+
     User getUserByEmail(String email);
 
     boolean isUserCustomer();

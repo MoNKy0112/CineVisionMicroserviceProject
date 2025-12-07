@@ -1,5 +1,0 @@
-# Created at 2025-11-28T12:09:43.893
-Boot Manifest-JAR contains absolute paths in classpath 'P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\userService\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

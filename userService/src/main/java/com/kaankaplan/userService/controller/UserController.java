@@ -22,10 +22,17 @@ public class UserController {
         userService.addUser(userRegisterRequestDto);
     }
 
+    @PostMapping("addAdmin")
+    public void addAdmin(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
+        userService.addAdmin(userRegisterRequestDto);
+    }
+
     @GetMapping("isUserCustomer")
     public boolean isUserCustomer() {
+        System.out.println("userService: ");
         return userService.isUserCustomer();
     }
+
     @GetMapping("isUserAdmin")
     public boolean isUserAdmin() {
         return userService.isUserAdmin();

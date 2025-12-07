@@ -37,12 +37,20 @@ public class UserServiceImpl implements UserService {
 
         Claim claim = claimService.getClaimByClaimName("CUSTOMER");
 
-        User user = User.builder()
-                        .email(userRegisterRequestDto.getEmail())
-                        .password(passwordEncoder.encode(userRegisterRequestDto.getPassword()))
-                        .fullName(userRegisterRequestDto.getCustomerName())
-                        .claim(claim)
-                        .build();
+        User user = User.builder().email(userRegisterRequestDto.getEmail())
+                .password(passwordEncoder.encode(userRegisterRequestDto.getPassword()))
+                .fullName(userRegisterRequestDto.getCustomerName()).claim(claim).build();
+        userDao.insert(user);
+    }
+
+    @Override
+    public void addAdmin(UserRegisterRequestDto userRegisterRequestDto) {
+
+        Claim claim = claimService.getClaimByClaimName("ADMIN");
+
+        User user = User.builder().email(userRegisterRequestDto.getEmail())
+                .password(passwordEncoder.encode(userRegisterRequestDto.getPassword()))
+                .fullName(userRegisterRequestDto.getCustomerName()).claim(claim).build();
         userDao.insert(user);
     }
 
@@ -54,9 +62,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isUserCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.getAuthorities().stream().allMatch(
-                a -> a.getAuthority().equals("ROLE_CUSTOMER")
-        )) {
+
+        authentication.getAuthorities()
+                .forEach(a -> System.out.println("authority: [" + a.getAuthority() + "]"));
+
+        if (authentication.getAuthorities().stream()
+                .allMatch(a -> a.getAuthority().equals("ROLE_CUSTOMER"))) {
             return true;
         }
         return false;
@@ -65,9 +76,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isUserAdmin() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.getAuthorities().stream().anyMatch(
-                a -> a.getAuthority().equals("ROLE_ADMIN")
-        )) {
+        if (authentication.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
             return true;
         }
         return false;
