@@ -57,11 +57,11 @@ export default function AddActorsAndCityToMovie() {
   return (
     <div>
         <div className='mt-5 p-5 container' style={{height: "100vh"}}>
-            <h2 className='mt-4'>Film Ekle</h2>
+            <h2 className='mt-4'>Agregar Película</h2>
             <hr />
 
             <h5 className='my-4'>
-                Eklemiş olduğunuz filmin oyuncu ve şehir bilgilerini ekleyin.
+                Agrega la información de actores y ciudades de la película que has agregado.
             </h5>
 
             <Formik 
@@ -114,15 +114,15 @@ export default function AddActorsAndCityToMovie() {
                             ))}
                         />
                     </div>
-                    <p>Listede yoksa lütfen virgül ile ayırarak yazınız.</p>
+                    <p>Si no está en la lista, por favor escríbelo separado por comas.</p>
                     <div class="form-floating mb-3">
-                        <KaanKaplanTextInput  type="text" name='actorName' class="form-control" id="floatingInput" placeholder="Aktörün İsmi" />
-                        <label for="floatingInput">Aktörün İsmi</label>
+                        <KaanKaplanTextInput  type="text" name='actorName' class="form-control" id="floatingInput" placeholder="Nombre del Actor" />
+                        <label for="floatingInput">Nombre del Actor</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <KaanKaplanTextInput name='imageUrl' type="text" class="form-control" id="imageUrl" placeholder="Afiş Resmi Url" />
-                        <label for="imageUrl">Afiş Resmi Url</label>
+                        <KaanKaplanTextInput name='imageUrl' type="text" class="form-control" id="imageUrl" placeholder="URL del Póster" />
+                        <label for="imageUrl">URL del Póster</label>
                     </div>
 
                      <div class="mb-3">
@@ -134,14 +134,14 @@ export default function AddActorsAndCityToMovie() {
                             options= {cities.map(city => (
                                 {key: city, text:city, value: city}
                             ))}
-                            placeholder="Şehir"
+                            placeholder="Ciudad"
                         />
                     </div>
 
                     <div className="d-grid gap-2 my-4 col-6 mx-auto">
                       <input
                         type="submit"
-                        value="Ekle"
+                        value="Agregar"
                         className="btn btn-block btn-primary"
                       />
                     </div>

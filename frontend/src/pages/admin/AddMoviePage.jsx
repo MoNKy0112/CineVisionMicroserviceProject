@@ -51,11 +51,11 @@ export default function AddMoviePage() {
   return (
     <div>
         <div className='mt-5 p-5 container' style={{height: "100vh"}}>
-            <h2 className='mt-4'>Film Ekle</h2>
+            <h2 className='mt-4'>Agregar Película</h2>
             <hr />
 
             <h5 className='my-4'>
-                Film bilgilerini eksiksiz olarak doldur ve filmin oyuncularını seçmek için ilerle.
+                Completa toda la información de la película y continúa para seleccionar los actores de la película.
             </h5>
 
             <Formik 
@@ -90,25 +90,25 @@ export default function AddMoviePage() {
 
                 <Form>
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextInput  type="text" name='movieName' class="form-control" id="floatingInput" placeholder="Film İsmi" />
-                    <label for="floatingInput">Filmin İsmi</label>
+                    <KaanKaplanTextInput  type="text" name='movieName' class="form-control" id="floatingInput" placeholder="Nombre de la Película" />
+                    <label for="floatingInput">Nombre de la Película</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextArea name='description' class="form-control" id="floatingPassword" placeholder="Özet" />
-                    <label for="floatingPassword">Filmin Özeti</label>
+                    <KaanKaplanTextArea name='description' class="form-control" id="floatingPassword" placeholder="Sinopsis" />
+                    <label for="floatingPassword">Sinopsis de la Película</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextInput  name='duration' type="number" class="form-control" id="duration" placeholder="Süre" />
-                    <label for="duration">Filmin Süresi</label>
+                    <KaanKaplanTextInput  name='duration' type="number" class="form-control" id="duration" placeholder="Duración" />
+                    <label for="duration">Duración de la Película</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextInput name='releaseDate' type="date" class="form-control" id="releaseDate" placeholder="Vizyon Tarihi" />
-                    <label for="releaseDate">Vizyon Tarihi</label>
+                    <KaanKaplanTextInput name='releaseDate' type="date" class="form-control" id="releaseDate" placeholder="Fecha de Estreno" />
+                    <label for="releaseDate">Fecha de Estreno</label>
                 </div>
                 
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextInput name='trailerUrl' type="text" class="form-control" id="trailerUrl" placeholder="Fragman Url" />
-                    <label for="trailerUrl">Fragman Url</label>
+                    <KaanKaplanTextInput name='trailerUrl' type="text" class="form-control" id="trailerUrl" placeholder="URL del Tráiler" />
+                    <label for="trailerUrl">URL del Tráiler</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -120,7 +120,7 @@ export default function AddMoviePage() {
                             {key: category?.categoryId, text:category?.categoryName, value: category?.categoryName}
                         ))}
                     />
-                    <label for="categoryId">Kategori</label>
+                    <label for="categoryId">Categoría</label>
                 </div>  
                 <div class="form-floating mb-3">
                     <KaanKaplanSelect
@@ -132,19 +132,19 @@ export default function AddMoviePage() {
                         ))}
                     />
                     
-                    <label for="directorId">Yönetmen</label>
+                    <label for="directorId">Director</label>
                 </div>
 
-                <p>Yönetmen yukarıdaki listede bulunmuyorsa lütfen yazın.</p>
+                <p>Si el director no está en la lista anterior, por favor escríbelo.</p>
                 <div class="form-floating mb-3">
-                    <KaanKaplanTextInput name='directorName' type="text" class="form-control" id="directorName" placeholder="Yönetmen İsmi" />
-                    <label for="directorName">Yönetmen İsmi</label>
+                    <KaanKaplanTextInput name='directorName' type="text" class="form-control" id="directorName" placeholder="Nombre del Director" />
+                    <label for="directorName">Nombre del Director</label>
                 </div>
 
                 <div class="form-check mb-3 text-start">
                     <KaanKaplanCheckBox name="isInVision" class="form-check-input" type="checkbox" id="isInVision" />
                     <label class="form-check-label" for="isInVision">
-                        Film Vizyonda Mı?
+                        ¿La película está en cartelera?
                     </label>
                 </div>
               
@@ -156,7 +156,7 @@ export default function AddMoviePage() {
                     <div className="d-grid gap-2 my-4 col-6 mx-auto">
                       <input
                         type="submit"
-                        value="İleri"
+                        value="Siguiente"
                         className="btn btn-block btn-primary"
                       />
                     </div>

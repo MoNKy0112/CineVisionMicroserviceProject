@@ -8,14 +8,14 @@ export default function Footer() {
             <div class="container px-5">
               <div className='row justify-content-evenly align-items-center'>
                 <div className='col'>
-                  <p className='m-1 lead text-center text-white'>Vizyonda</p>
-                  <p className='m-1 lead text-center text-white'>Yakında</p>
-                  <p className='m-1 lead text-center text-white'>Sinemalar</p>
+                  <p className='m-1 lead text-center text-white'>En Cartelera</p>
+                  <p className='m-1 lead text-center text-white'>Próximamente</p>
+                  <p className='m-1 lead text-center text-white'>Cines</p>
                 </div>
                 <div className='col'>
-                  <p className='m-1 lead text-center text-white'>E-Bilet</p>
-                  <p className='m-1 lead text-center text-white'>İade İşlemleri</p>
-                  <p className='m-1 lead text-center text-white'>Satış Sözleşmesi</p>
+                  <p className='m-1 lead text-center text-white'>E-Boleto</p>
+                  <p className='m-1 lead text-center text-white'>Procesos de Reembolso</p>
+                  <p className='m-1 lead text-center text-white'>Contrato de Venta</p>
                 </div>
               </div>
               <p class="mt-5 text-center text-white small">

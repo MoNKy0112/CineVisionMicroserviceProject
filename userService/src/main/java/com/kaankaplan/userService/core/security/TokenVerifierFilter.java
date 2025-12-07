@@ -56,7 +56,7 @@ public class TokenVerifierFilter extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
 
             } catch (JwtException e) {
-                throw new RuntimeException("Token geçerli değil!");
+                throw new RuntimeException("Token no válido!");
             }
 
         } else {

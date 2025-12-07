@@ -37,6 +37,6 @@ public class MovieImageServiceImpl implements MovieImageService {
 
             return movieImageDao.save(image);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }

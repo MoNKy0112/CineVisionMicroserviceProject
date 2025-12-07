@@ -46,6 +46,6 @@ public class DirectorServiceImpl implements DirectorService {
                     Director.builder().directorName(directorRequestDto.getDirectorName()).build();
             return directorDao.save(director);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }

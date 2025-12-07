@@ -66,6 +66,6 @@ public class CommentServiceImpl implements CommentService {
 
             return commentDao.save(comment);
         }
-        throw new RuntimeException("Yetki hatası");
+        throw new RuntimeException("Error de autorización");
     }
 }

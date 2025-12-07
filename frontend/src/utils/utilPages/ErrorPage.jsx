@@ -6,12 +6,12 @@ export default function ErrorPage() {
     <div className='d-flex container justify-content-center align-items-center text-center' style={{height:"75vh"}}>
         
     <main>
-        <h1>Üzgünüz aradığınız sayfayı bulamadık</h1>
-        <h3>404 Sayfa Bulunamadı</h3>
+        <h1>Lo sentimos, no pudimos encontrar la página que buscas</h1>
+        <h3>404 Página No Encontrada</h3>
         <div className='container mt-4'>
             <div className='col-sm-12 text-center'>
                 <Link to="/">
-                    <button className='btn btn-primary'>Anasayfaya Dön <i className="fa-solid fa-house"></i></button>
+                    <button className='btn btn-primary'>Volver al Inicio <i className="fa-solid fa-house"></i></button>
                 </Link> 
             </div>
         </div>

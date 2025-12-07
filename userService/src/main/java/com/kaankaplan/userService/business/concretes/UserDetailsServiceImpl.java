@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userService.getUserByEmail(email);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Kullanıcı bulunamadı");
+            throw new UsernameNotFoundException("Usuario no encontrado");
         }
 
         // Si claim es null, asignamos un rol por defecto

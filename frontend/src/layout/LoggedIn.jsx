@@ -11,7 +11,7 @@ export default function LoggedIn() {
         <ul className="navbar-nav ms-auto py-4 py-lg-0">
             <li class="nav-item">
                 <a class="nav-link" href="#!" onClick={() => dispatch(removeUserFromState())}>
-                  Çıkış Yap
+                  Cerrar Sesión
                 </a>
             </li>
         </ul>
