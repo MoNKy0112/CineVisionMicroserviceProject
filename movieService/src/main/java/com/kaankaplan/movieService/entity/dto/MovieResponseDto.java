@@ -30,6 +30,9 @@ public class MovieResponseDto implements Serializable {
 
     private String directorName;
 
+    private String language;
+    private Date startProjectionDate;
+    private Date endProjectionDate;
 //    private List<Actor> actors;
 
 }

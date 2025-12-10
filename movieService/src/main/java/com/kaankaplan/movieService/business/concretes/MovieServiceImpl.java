@@ -38,6 +38,18 @@ public class MovieServiceImpl implements MovieService {
         return movieDao.getAllComingSoonMovies();
     }
 
+    @Cacheable(value = "upcomingProjection_movies")
+    @Override
+    public List<MovieResponseDto> getUpcomingProjectionMovies() {
+        return movieDao.getUpcomingProjectionMovies();
+    }
+    
+    @Cacheable(value = "recentlyProjection_movies")
+    @Override
+    public List<MovieResponseDto> getRecentlyStartedProjectionMovies() {
+        return movieDao.getRecentlyStartedProjectionMovies();
+    }
+
     @Override
     public MovieResponseDto getMovieByMovieId(int movieId) {
         return movieDao.getMovieById(movieId);
@@ -72,6 +84,9 @@ public class MovieServiceImpl implements MovieService {
                     .category(category)
                     .director(director)
                     .isDisplay(movieRequestDto.isInVision())
+                    .language(movieRequestDto.getLanguage())
+                    .startProjectionDate(movieRequestDto.getStartProjectionDate())
+                    .endProjectionDate(movieRequestDto.getEndProjectionDate())
                     .build();
             return movieDao.save(movie);
         }

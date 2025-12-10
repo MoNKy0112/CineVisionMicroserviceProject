@@ -20,6 +20,9 @@ public class MovieRequestDto {
     private Date releaseDate;
     private String trailerUrl;
     private boolean isInVision;
+    private String language;
+    private Date startProjectionDate;
+    private Date endProjectionDate;
     private int categoryId;
     private int directorId;
     private List<Integer> actors;

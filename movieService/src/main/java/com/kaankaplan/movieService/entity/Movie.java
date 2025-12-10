@@ -27,6 +27,9 @@ public class Movie {
     private Date releaseDate;
     private boolean isDisplay;
     private String movieTrailerUrl;
+    private String language;
+    private Date startProjectionDate;
+    private Date endProjectionDate;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
