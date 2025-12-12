@@ -38,9 +38,17 @@ public class CommentServiceImpl implements CommentService {
     public void deleteComment(DeleteCommentRequestDto deleteCommentRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
+<<<<<<< HEAD
                 .uri("http://USERSERVICE/api/user/users/isUserCustomer")
                 .header("Authorization", "Bearer " + deleteCommentRequestDto.getToken()).retrieve()
                 .bodyToMono(Boolean.class).block();
+=======
+                // .uri("http://USERSERVICE/api/user/users/isUserCustomer")
+                // .header("Authorization","Bearer " + deleteCommentRequestDto.getToken())
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+>>>>>>> ad31c88 (Se añade idioma español y algunos test)
 
         if (result) {
             commentDao.deleteById(deleteCommentRequestDto.getCommentId());
@@ -52,9 +60,17 @@ public class CommentServiceImpl implements CommentService {
     public Comment addComment(CommentRequestDto commentRequestDto) {
 
         Boolean result = webClientBuilder.build().get()
+<<<<<<< HEAD
                 .uri("http://USERSERVICE/api/user/users/isUserCustomer")
                 .header("Authorization", "Bearer " + commentRequestDto.getToken()).retrieve()
                 .bodyToMono(Boolean.class).block();
+=======
+                // .uri("http://USERSERVICE/api/user/users/isUserCustomer")
+                // .header("Authorization","Bearer " + commentRequestDto.getToken())
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+>>>>>>> ad31c88 (Se añade idioma español y algunos test)
 
         if (result) {
             Movie movie = movieService.getMovieById(commentRequestDto.getMovieId());

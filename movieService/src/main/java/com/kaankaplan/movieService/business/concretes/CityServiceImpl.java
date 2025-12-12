@@ -38,10 +38,19 @@ public class CityServiceImpl implements CityService {
     @CacheEvict(value = "cities", allEntries = true)
     @Override
     public void add(CityRequestDto cityRequestDto) {
+<<<<<<< HEAD
         Boolean result =
                 webClientBuilder.build().get().uri("http://USERSERVICE/api/user/users/isUserAdmin")
                         .header("Authorization", "Bearer " + cityRequestDto.getToken()).retrieve()
                         .bodyToMono(Boolean.class).block();
+=======
+        Boolean result = webClientBuilder.build().get()
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + cityRequestDto.getToken())
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+>>>>>>> ad31c88 (Se añade idioma español y algunos test)
         if (result) {
             Movie movie = movieService.getMovieById(cityRequestDto.getMovieId());
             for (String cityName : cityRequestDto.getCityNameList()) {

@@ -33,6 +33,7 @@ public class DirectorServiceImpl implements DirectorService {
 
     @CacheEvict(value = "directors", allEntries = true)
     @Override
+<<<<<<< HEAD
     public Director add(DirectorRequestDto directorRequestDto) {
         Boolean result =
                 webClientBuilder.build().get().uri("http://USERSERVICE/api/user/users/isUserAdmin")
@@ -40,6 +41,16 @@ public class DirectorServiceImpl implements DirectorService {
                         .retrieve().bodyToMono(Boolean.class).block();
 
 
+=======
+    public Director add(DirectorRequestDto directorRequestDto)
+    {
+        Boolean result = webClientBuilder.build().get()
+                // .uri("http://USERSERVICE/api/user/isUserAdmin")
+                // .header("Authorization", "Bearer " + directorRequestDto.getToken())
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+>>>>>>> ad31c88 (Se añade idioma español y algunos test)
 
         if (result) {
             Director director =

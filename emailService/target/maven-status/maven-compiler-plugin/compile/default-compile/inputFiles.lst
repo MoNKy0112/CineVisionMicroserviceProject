@@ -1,6 +1,6 @@
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\business\concretes\EmailServiceImpl.java
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\dto\EmailMessageKafkaDto.java
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\kafka\KafkaConsumer.java
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\config\FreeMarkerEmailTemplateConfig.java
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\business\abstracts\EmailService.java
-P:\Universidad\Diplomado\Calidad de software\CineVisionMicroservice\CineVisionMicroserviceProject-main\emailService\src\main\java\com\kaankaplan\emailService\EmailServiceApplication.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\business\abstracts\EmailService.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\business\concretes\EmailServiceImpl.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\config\FreeMarkerEmailTemplateConfig.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\dto\EmailMessageKafkaDto.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\EmailServiceApplication.java
+C:\Users\vasqu\Documents\lab2modulo3\CineVisionMicroserviceProject\emailService\src\main\java\com\kaankaplan\emailService\kafka\KafkaConsumer.java
