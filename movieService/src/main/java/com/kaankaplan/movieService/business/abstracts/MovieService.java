@@ -16,6 +16,10 @@ public interface MovieService {
 
     List<MovieResponseDto> getRecentlyStartedProjectionMovies();
 
+    List<MovieResponseDto> getMoviesLeavingSoon();
+
+    List<MovieResponseDto> getMoviesOutOfTheaters();
+
     MovieResponseDto getMovieByMovieId(int movieId);
 
     Movie getMovieById(int movieId);

@@ -56,7 +56,7 @@ export default function AddActorsAndCityToMovie() {
 
   return (
     <div>
-        <div className='mt-5 p-5 container' style={{height: "100vh"}}>
+        <div className='mt-5 p-5 container' style={{minHeight: "100vh"}}>
             <h2 className='mt-4'>Agregar Película</h2>
             <hr />
 
@@ -103,12 +103,14 @@ export default function AddActorsAndCityToMovie() {
                 }}>
 
                 <Form>
+                    <label className="form-label">Selecciona Actores (mantén Ctrl/Cmd para múltiples)</label>
                     <div class="mb-3">
                         <KaanKaplanSelect
-                            class="form-select form-select-lg mb-3"
+                            class="form-select mb-3"
+                            style={{height: "120px"}}
                             name="actors"
                             multiple
-                            size={3}
+                            size={5}
                             options={actors.map(actor => (
                                 {key: actor, text:actor, value: actor}
                             ))}
@@ -125,12 +127,14 @@ export default function AddActorsAndCityToMovie() {
                         <label for="imageUrl">URL del Póster</label>
                     </div>
 
-                     <div class="mb-3">
+                    <label className="form-label">Selecciona Ciudades (mantén Ctrl/Cmd para múltiples)</label>
+                    <div class="mb-3">
                         <KaanKaplanSelect 
-                            class="form-select form-select-lg mb-3"
+                            class="form-select mb-3"
+                            style={{height: "120px"}}
                             name="cities"
                             multiple
-                            size={3}
+                            size={5}
                             options= {cities.map(city => (
                                 {key: city, text:city, value: city}
                             ))}
