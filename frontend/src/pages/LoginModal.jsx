@@ -29,7 +29,8 @@ export default function LoginModal() {
                 })
             }
         }).catch(e => {
-            toast.error("Email o contraseña incorrectos. Por favor, inténtalo de nuevo", {
+            const errorMessage = e?.response?.data?.message || "Email o contraseña incorrectos. Por favor, inténtalo de nuevo";
+            toast.error(errorMessage, {
                 theme: "colored",
                 position: "top-center"
             })

@@ -28,6 +28,12 @@ export default function RegisterModal() {
                         position:"top-center"
                     })
                 }
+            }).catch(error => {
+                const errorMessage = error?.response?.data?.message || "Error al registrarse. Por favor, intenta de nuevo.";
+                toast.error(errorMessage, {
+                    theme: "colored",
+                    position: "top-center"
+                });
             })
         } else {
             toast.error("Las contraseñas no coinciden.", {
