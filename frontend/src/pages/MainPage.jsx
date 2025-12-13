@@ -13,16 +13,20 @@ export default function MainPage() {
     const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
 
-    async function getMovies(isComingSoon) {
-        if (isComingSoon) {
+    async function getMovies(category) {
+        if (category === 'comingSoon') {
             await movieService.getAllComingSoonMovies().then(result => setMovies(result.data))
-        }else {
+        } else if (category === 'leavingSoon') {
+            await movieService.getMoviesLeavingSoon().then(result => setMovies(result.data))
+        } else if (category === 'outOfTheaters') {
+            await movieService.getMoviesOutOfTheaters().then(result => setMovies(result.data))
+        } else {
             await movieService.getAllDisplayingMovies().then(result => setMovies(result.data))
         }
     }
 
     useEffect(() => {
-      getMovies(false);
+      getMovies('displaying');
     }, [])
     
 
@@ -88,20 +92,36 @@ export default function MainPage() {
         <div className='d-flex justify-content-center'>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" 
-                        data-bs-target="#pills-home" type="button"
-                        role="tab" aria-controls="pills-home" aria-selected="true"
+                    <button class="nav-link active" id="pills-displaying-tab" data-bs-toggle="pill" 
+                        data-bs-target="#pills-displaying" type="button"
+                        role="tab" aria-controls="pills-displaying" aria-selected="true"
                         onClick={() => {
-                            getMovies(false)
+                            getMovies('displaying')
                         }}>En Cartelera</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false"
+                    <button class="nav-link" id="pills-comingsoon-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-comingsoon"
+                    type="button" role="tab" aria-controls="pills-comingsoon" aria-selected="false"
                     onClick={() => {
-                        getMovies(true)
+                        getMovies('comingSoon')
                     }}>Próximamente</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-leavingsoon-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-leavingsoon"
+                    type="button" role="tab" aria-controls="pills-leavingsoon" aria-selected="false"
+                    onClick={() => {
+                        getMovies('leavingSoon')
+                    }}>Próximas a Salir</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-outoftheaters-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-outoftheaters"
+                    type="button" role="tab" aria-controls="pills-outoftheaters" aria-selected="false"
+                    onClick={() => {
+                        getMovies('outOfTheaters')
+                    }}>Fuera de Cartelera</button>
                 </li>
             </ul>
         </div>

@@ -38,6 +38,16 @@ public class MovieController {
         return movieService.getRecentlyStartedProjectionMovies();
     }
 
+    @GetMapping("leavingSoonMovies")
+    public List<MovieResponseDto> getMoviesLeavingSoon() {
+        return movieService.getMoviesLeavingSoon();
+    }
+
+    @GetMapping("outOfTheatersMovies")
+    public List<MovieResponseDto> getMoviesOutOfTheaters() {
+        return movieService.getMoviesOutOfTheaters();
+    }
+
     @GetMapping("{movieId}")
     public MovieResponseDto getMovieById(@PathVariable int movieId) {
         return movieService.getMovieByMovieId(movieId);

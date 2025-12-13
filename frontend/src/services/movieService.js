@@ -12,6 +12,22 @@ export class MovieService {
         return axios.get(this.apiUrl + "comingSoonMovies");
     }
 
+    getUpcomingProjectionMovies() {
+        return axios.get(this.apiUrl + "upcomingProjectionMovies");
+    }
+
+    getRecentlyProjectionMovies() {
+        return axios.get(this.apiUrl + "recentlyProjectionMovies");
+    }
+
+    getMoviesLeavingSoon() {
+        return axios.get(this.apiUrl + "leavingSoonMovies");
+    }
+
+    getMoviesOutOfTheaters() {
+        return axios.get(this.apiUrl + "outOfTheatersMovies");
+    }
+
     getMovieById(movieId) {
         return axios.get(this.apiUrl + movieId);
     }

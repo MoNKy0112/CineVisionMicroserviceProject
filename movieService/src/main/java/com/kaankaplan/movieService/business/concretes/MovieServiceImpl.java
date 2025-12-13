@@ -50,6 +50,18 @@ public class MovieServiceImpl implements MovieService {
         return movieDao.getRecentlyStartedProjectionMovies();
     }
 
+    @Cacheable(value = "leavingSoon_movies")
+    @Override
+    public List<MovieResponseDto> getMoviesLeavingSoon() {
+        return movieDao.getMoviesLeavingSoon();
+    }
+
+    @Cacheable(value = "outOfTheaters_movies")
+    @Override
+    public List<MovieResponseDto> getMoviesOutOfTheaters() {
+        return movieDao.getMoviesOutOfTheaters();
+    }
+
     @Override
     public MovieResponseDto getMovieByMovieId(int movieId) {
         return movieDao.getMovieById(movieId);

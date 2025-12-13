@@ -50,7 +50,7 @@ export default function AddMoviePage() {
 
   return (
     <div>
-        <div className='mt-5 p-5 container' style={{height: "100vh"}}>
+        <div className='mt-5 p-5 container' style={{minHeight: "100vh"}}>
             <h2 className='mt-4'>Agregar Película</h2>
             <hr />
 
@@ -109,6 +109,21 @@ export default function AddMoviePage() {
                 <div class="form-floating mb-3">
                     <KaanKaplanTextInput name='trailerUrl' type="text" class="form-control" id="trailerUrl" placeholder="URL del Tráiler" />
                     <label for="trailerUrl">URL del Tráiler</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <KaanKaplanTextInput name='language' type="text" class="form-control" id="language" placeholder="Idioma" />
+                    <label for="language">Idioma de la Película</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <KaanKaplanTextInput name='startProjectionDate' type="date" class="form-control" id="startProjectionDate" placeholder="Fecha de Inicio de Proyección" />
+                    <label for="startProjectionDate">Inicio de Proyección</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <KaanKaplanTextInput name='endProjectionDate' type="date" class="form-control" id="endProjectionDate" placeholder="Fecha de Fin de Proyección" />
+                    <label for="endProjectionDate">Fin de Proyección</label>
                 </div>
 
                 <div class="form-floating mb-3">
