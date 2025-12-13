@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import { MovieService } from '../services/movieService';
 import { useNavigate } from 'react-router-dom';
+import { mockCategories, mockCities } from '../services/mockData';
 
 export default function MainPage() {
  
@@ -12,17 +13,57 @@ export default function MainPage() {
 
     const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
+    const [allMovies, setAllMovies] = useState([]); // Almacenar todas las películas sin filtrar
+    const [activeTab, setActiveTab] = useState('displaying');
+    const [selectedCategory, setSelectedCategory] = useState(''); // RF8: Filtro de categoría
+    const [selectedCity, setSelectedCity] = useState(''); // RF9: Filtro de ciudad
 
-    async function getMovies(isComingSoon) {
-        if (isComingSoon) {
-            await movieService.getAllComingSoonMovies().then(result => setMovies(result.data))
-        }else {
-            await movieService.getAllDisplayingMovies().then(result => setMovies(result.data))
+    // Función para filtrar películas
+    function applyFilters(moviesToFilter) {
+        let filtered = moviesToFilter;
+        
+        // RF8: Filtrar por categoría
+        if (selectedCategory) {
+            filtered = filtered.filter(movie => movie.category === selectedCategory);
         }
+        
+        // RF9: Filtrar por ciudad
+        if (selectedCity) {
+            filtered = filtered.filter(movie => movie.city === selectedCity);
+        }
+        
+        setMovies(filtered);
     }
 
+    async function getMovies(tabType) {
+        setActiveTab(tabType);
+        setSelectedCategory(''); // Reset filtros al cambiar tab
+        setSelectedCity('');
+        
+        let moviesToShow;
+        
+        if (tabType === 'comingSoon') {
+            const result = await movieService.getAllComingSoonMovies();
+            moviesToShow = result.data;
+        } else if (tabType === 'archived') {
+            const result = await movieService.getAllArchivedMovies();
+            moviesToShow = result.data;
+        } else {
+            const result = await movieService.getAllDisplayingMovies();
+            moviesToShow = result.data;
+        }
+        
+        setAllMovies(moviesToShow);
+        setMovies(moviesToShow);
+    }
+
+    // Cuando cambian los filtros, reaplica los filtros
     useEffect(() => {
-      getMovies(false);
+        applyFilters(allMovies);
+    }, [selectedCategory, selectedCity]);
+
+    useEffect(() => {
+      getMovies('displaying');
     }, [])
     
 
@@ -88,22 +129,70 @@ export default function MainPage() {
         <div className='d-flex justify-content-center'>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" 
+                    <button class={`nav-link ${activeTab === 'displaying' ? 'active' : ''}`} id="pills-home-tab" data-bs-toggle="pill" 
                         data-bs-target="#pills-home" type="button"
-                        role="tab" aria-controls="pills-home" aria-selected="true"
+                        role="tab" aria-controls="pills-home" aria-selected={activeTab === 'displaying'}
                         onClick={() => {
-                            getMovies(false)
+                            getMovies('displaying')
                         }}>En Cartelera</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                    <button class={`nav-link ${activeTab === 'comingSoon' ? 'active' : ''}`} id="pills-profile-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected={activeTab === 'comingSoon'}
                     onClick={() => {
-                        getMovies(true)
+                        getMovies('comingSoon')
                     }}>Próximamente</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class={`nav-link ${activeTab === 'archived' ? 'active' : ''}`} id="pills-archived-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-archived"
+                    type="button" role="tab" aria-controls="pills-archived" aria-selected={activeTab === 'archived'}
+                    onClick={() => {
+                        getMovies('archived')
+                    }}>Películas Archivadas</button>
+                </li>
             </ul>
+        </div>
+    </section>
+
+    {/* Section - Filtros RF8 y RF9 */}
+    <section className='py-3 bg-light'>
+        <div className='container'>
+            <div className='row g-3'>
+                {/* RF8: Filtro por categoría */}
+                <div className='col-md-6'>
+                    <label className='form-label fw-bold'>Filtrar por Categoría</label>
+                    <select 
+                        className='form-select'
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                    >
+                        <option value=''>Todas las categorías</option>
+                        {mockCategories.map(cat => (
+                            <option key={cat.id} value={cat.name}>{cat.name}</option>
+                        ))}
+                    </select>
+                </div>
+
+                {/* RF9: Filtro por ciudad */}
+                <div className='col-md-6'>
+                    <label className='form-label fw-bold'>Filtrar por Ciudad</label>
+                    <select 
+                        className='form-select'
+                        value={selectedCity}
+                        onChange={(e) => setSelectedCity(e.target.value)}
+                    >
+                        <option value=''>Todas las ciudades</option>
+                        {mockCities.map(city => (
+                            <option key={city.id} value={city.name}>{city.name}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+            <div className='mt-2'>
+                <small className='text-muted'>Mostrando {movies.length} película(s)</small>
+            </div>
         </div>
     </section>
 
